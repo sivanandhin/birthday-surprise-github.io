@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Animation</title>
+
+<style>
+
+body{
+background-color:#f8bbd0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+font-family:Georgia;
+overflow:hidden;
+}
+
+.card{
+width:400px;
+height:300px;
+background:#fff3f3;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+button{
+margin-top:20px;
+padding:10px 25px;
+font-size:18px;
+border:none;
+border-radius:25px;
+background:#c2185b;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#f06292;
+}
+
+.cake{
+width:120px;
+height:80px;
+background:#a1887f;
+position:relative;
+border-radius:10px 10px 0 0;
+box-shadow:0 5px #8d6e63;
+opacity:0;
+transform:translateY(100px);
+transition:1s;
+}
+
+.cake.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.cake::before{
+content:'';
+position:absolute;
+width:120px;
+height:20px;
+background:#f06292;
+top:25px;
+border-radius:5px;
+}
+
+.candle{
+width:8px;
+height:30px;
+background:#fff;
+position:absolute;
+top:-30px;
+left:56px;
+border-radius:2px;
+}
+
+.flame{
+width:12px;
+height:18px;
+background:#ffeb3b;
+position:absolute;
+top:-15px;
+left:-2px;
+border-radius:50% 50% 20% 20%;
+box-shadow:0 0 10px #ff9800;
+animation:flicker 0.5s infinite alternate;
+display:none;
+}
+
+.Happy_Birthday{
+margin-top:20px;
+color:#c2185b;
+font-size:2.2em;
+font-weight:700;
+white-space:nowrap;
+overflow:hidden;
+width:0;
+display:none;
+}
+
+.showText{
+display:block;
+animation:typing 3s steps(30,end) forwards;
+}
+
+@keyframes typing{
+from{width:0;}
+to{width:100%;}
+}
+
+@keyframes flicker{
+from{transform:scale(1);opacity:0.8;}
+to{transform:scale(1.1);opacity:1;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="cake" id="cake">
+<div class="candle">
+<div class="flame" id="flame"></div>
+</div>
+</div>
+
+<div class="Happy_Birthday" id="text">
+Happy Birthday my Love!
+</div>
+
+<button onclick="startAnimation()">Blow The Candle</button>
+
+</div>
+
+<script>
+
+function startAnimation(){
+
+document.getElementById("cake").classList.add("show");
+
+setTimeout(function(){
+document.getElementById("flame").style.display="block";
+},1000);
+
+setTimeout(function(){
+document.getElementById("text").classList.add("showText");
+},1800);
+
+}
+
+</script>
+
+</body>
+</html>
